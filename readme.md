@@ -3,22 +3,22 @@ A Redis Proxy Service implements as an HTTP web Service.
 The system built with thread pool and LRU Cache, and support concurrent processing.
 
 ## What the code does.
-Service/ProxyService is the HTTP web server to take GET request. 
+**Service/ProxyService** is the HTTP web server to take GET request. 
 
-Each request, service checks if found in cache and not expired.
+Each request, service checks if found in **cache** and not expired.
 
 If yes, update the cache entry's lastUpdated time, move up the cache entry to prevent evict, return the result to client.
 If not found, search in Redis, if found, store in cache.
 
-Util contains a implementation of golang like thread pool:
+**Util** contains a implementation of golang version **Thread Pool**:
 
-Each job will send to a Job Queue, aiming to process by order.
+Each job will send to a **Job Queue**, aiming to process by order.
 
-WorkerPool contains a configurable number of workers to handler jobs.
+**WorkerPool** contains a configurable number of workers to handler jobs.
 
-Worker always listen to incoming job, and run forver until receives shutdown notification
+**Worker** always listen to incoming job, and run forver until receives shutdown notification
 
-A JobScheduler to listen incoming job, find an avaiable worker from pool, assign the job to the worker. Run forever until receives shutdown notification.
+A **JobScheduler** to listen incoming job, find an avaiable worker from pool, assign the job to the worker. Run forever until receives shutdown notification.
 
 Infra contains the redisHandler low level implementation.
 
