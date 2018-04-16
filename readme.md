@@ -14,7 +14,7 @@ If not found, search in Redis, if found, store in cache.
 
 Each job will send to a **Job Queue**, aiming to process by order.
 
-**WorkerPool** contains a configurable number of workers to handler jobs.
+**WorkerPool** contains a configurable number of workers to handle jobs.
 
 **Worker** always listen to incoming job, and run forver until receives shutdown notification
 
@@ -41,7 +41,7 @@ make test
 ### Run:
 docker-compose up
 
-If you want just want to run the proxy in docker, and mannualy point to a redis backend:
+If you just want to run the proxy in docker, and mannualy point to a redis backend:
 docker run -p 10000:10000 myproxy -redisIpAndPort=127.0.0.1:6379
 
 ### Options
